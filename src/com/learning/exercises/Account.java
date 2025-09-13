@@ -2,17 +2,24 @@ package com.learning.exercises;
 
 import java.util.Scanner;
 
-public class OOPS {
+interface bankOperations
+{
+	 void calculate(double amt);   //implemented abstraction through interfaces
+	 double getBalance();
+	 
+}
 
-	private int id;                // encapsulat data members & methods Encapsulation using private access modifier
+public class Account implements bankOperations{
+
+	private int id;                // encapsulate data members & methods Encapsulation using private access modifier
 	private String name;
 	private double balance;
 	
-	public OOPS() {
+	public Account() {
 		super();
 	}
 
-	public OOPS(int id, String name) {
+	public Account(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -35,19 +42,22 @@ public class OOPS {
 		this.name = name;
 	}
 	
-	public void Calculate(int amt)    //Compile Time Polymorphism
-	{
+	
+	@Override
+	public void calculate(double amt) {
 		this.balance=balance+amt;
+
 	}
 	
-	public void Calculate(double amt) //Compile Time Polymorphishm
-	{
-		this.balance=balance+amt;
+
+	@Override
+	public double getBalance() {
+		return this.balance;
 	}
 
 	public static void main(String[] args) {
 
-		 OOPS obj=new OOPS();
+		 Account obj=new Account();
 		 obj.setId(1);
 		 obj.setName("Sathish");
 		 
@@ -64,12 +74,14 @@ public class OOPS {
 		 {
 			 System.out.println("Enter the Amount for the month:"+i);
 			 dues[i-1]=sc.nextDouble();
-			 obj.Calculate(dues[i-1]);
+			 obj.calculate(dues[i-1]);
 			 
 		 }
 		 
 		 System.out.println("Total Amount is Paid By the User Sathish is:"+obj.balance);
 		 
 	}
+
+
 
 }
