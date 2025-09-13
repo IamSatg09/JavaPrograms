@@ -68,7 +68,7 @@ public class OOPS {
 			 
 		 }
 		 
-		 System.out.println("Total Amount is Paid By the User:"+obj.balance);
+		 System.out.println("Total Amount is Paid By the User Sathish is:"+obj.balance);
 		 
 	}
 
