@@ -4,19 +4,19 @@ import java.util.Scanner;
 
 public class OOPS {
 
-	int id;                // encapsulat data members & methods Encapsulation 
-	String name;
-	double balance;
+	private int id;                // encapsulat data members & methods Encapsulation using private access modifier
+	private String name;
+	private double balance;
 	
 	public OOPS() {
 		super();
 	}
 
-	public OOPS(int id, String name,int balance) {
+	public OOPS(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.balance=0;
+		this.balance=500;
 	}
 	
 	public int getId() {
@@ -56,15 +56,15 @@ public class OOPS {
 		 
 		 System.out.println("Enter the Amount paid for this year");
 		 
-		 int[] dues= new int[12];
+		 double[] dues= new double[12];
 		 
 		 Scanner sc=new Scanner(System.in); 
 		 
 		 for(int i=1;i<=12;i++)
 		 {
 			 System.out.println("Enter the Amount for the month:"+i);
-			 dues[i-1]=sc.nextInt();
-			 obj.balance+=dues[i-1];
+			 dues[i-1]=sc.nextDouble();
+			 obj.Calculate(dues[i-1]);
 			 
 		 }
 		 
