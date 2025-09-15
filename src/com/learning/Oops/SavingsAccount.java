@@ -1,4 +1,4 @@
-package com.learning.exercises;
+package com.learning.Oops;
 
 public class SavingsAccount extends Account{  //inheritance extends Account class so Savings Account class also has properties and methods of Account class
 
