@@ -1,6 +1,6 @@
 package com.learning.exercises;
 
-public class SavingsAccount extends Account{
+public class SavingsAccount extends Account{  //inheritance extends Account class so Savings Account class also has properties and methods of Account class
 
 	double balance;
 	
@@ -19,9 +19,9 @@ public class SavingsAccount extends Account{
 	    System.out.println("Savings Account Details");
 	    System.out.println("userId:"+acc1.getId());
 	    System.out.println("userName:"+acc1.getName());
+	    acc1.calculate(100);   //calls the method from parent class
 	    
-	    
-	    acc1.deposit(1000);
+	    acc1.deposit(1000);    //calls the method from own class (child class)
 	    System.out.println("Available Balance:"+acc1.balance);
 	    
 	    
