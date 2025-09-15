@@ -95,6 +95,40 @@ public class StringOPs {
        System.out.println(CheckPali2("madaM"));
        System.out.println(vowelCount("aeiou"));
        System.out.println(vowelCountUsingStreams("aeiouAEIOU"));
+       
+       
+       System.out.println("String Builder Examples");
+       
+       StringBuilder sb=new StringBuilder("StringBuilderObject");
+       System.out.println("before changes to string Builder sb :"+System.identityHashCode(sb));
+
+       sb.append(" appendString ");
+       System.out.println(sb);
+       System.out.println("After changes to stringbuilder sb :"+System.identityHashCode(sb));
+
+       sb.insert(13, "insert");
+       System.out.println(sb+" length:"+sb.length());
+       
+       
+       sb.replace(32, 38, "");
+       System.out.println(sb);
+       String sbString= sb.toString();
+       
+       System.out.println("reversed SB Stirnng"+sb.reverse());
+      
+
+      
+       
+
+       System.out.println("before changes to string literal str1 :"+System.identityHashCode(str1));
+       System.out.println(System.identityHashCode(str2));
+       
+       str1=str1+" python";
+       
+       
+       System.out.println("After changing string literal str1 :"+System.identityHashCode(str1));
+       System.out.println(System.identityHashCode(str2));
+
 
                       
 			

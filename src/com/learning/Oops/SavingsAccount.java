@@ -4,8 +4,8 @@ public class SavingsAccount extends Account{  //inheritance extends Account clas
 
 	double balance;
 	
-	public SavingsAccount(int id,String name) {
-		super(id,name);
+	public SavingsAccount(int id,String name,int age) {
+		super(id,name,age);
 	}
 	
 	public void deposit(double amt)
@@ -15,7 +15,7 @@ public class SavingsAccount extends Account{  //inheritance extends Account clas
 	
 	public static void main(String args[])
 	{
-		SavingsAccount acc1=new SavingsAccount(2,"santhosh");
+		SavingsAccount acc1=new SavingsAccount(2,"santhosh",20);
 	    System.out.println("Savings Account Details");
 	    System.out.println("userId:"+acc1.getId());
 	    System.out.println("userName:"+acc1.getName());
