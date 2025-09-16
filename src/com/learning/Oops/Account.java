@@ -5,14 +5,23 @@ import java.util.Scanner;
 
 import com.learning.Exceptions.InValidAgeException;
 
-interface bankOperations
+interface bankOperations   //it's now a functional interface has one abstract method only & default & static methods as per java8
 {
 	 void calculate(double amt);   //implemented abstraction through interfaces
-	 double getBalance();
 	 
+	 default void printWelcome()
+	 {
+		 System.out.println("welcome to  java 8 banking system");
+		 
+	 }
+	 
+	 static void bankInfo()
+	 {
+		 System.out.println("bank operations interface provided by java 8 ");
+	 }
 }
 
-public class Account implements bankOperations{
+public class Account{
 
 	private int id;                // encapsulate data members & methods Encapsulation using private access modifier
 	private String name;
@@ -56,17 +65,12 @@ public class Account implements bankOperations{
 		this.name = name;
 	}
 	
-	
-	@Override
-	public void calculate(double amt) {
-		this.balance=balance+amt;
-
-	}
-	
-
-	@Override
 	public double getBalance() {
-		return this.balance;
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
 	}
 
 	public static void main(String[] args) {
@@ -83,19 +87,18 @@ public class Account implements bankOperations{
 		 
 		 System.out.println("Enter Age");
 		 int Age=sc.nextInt();
+		 
 	
 		 obj.setId(id);
 		 obj.setName(name);
 		 obj.setAge(Age);
+		 
+		 bankOperations bo=amt->obj.setBalance(obj.getBalance()+amt); //lambda expression
+		 
 		 System.out.println("userID:"+obj.getId());
 		 System.out.println("UserName:"+obj.getName());
-		}
-		catch(Exception e)
-		{
-		 System.out.println("Exception:"+e.getMessage());
-		 e.printStackTrace();
-			return;
-		}
+		 bankOperations.bankInfo();
+		
 		 
 		 System.out.println("Enter the Amount paid for this year");
 		 
@@ -108,13 +111,21 @@ public class Account implements bankOperations{
 		 {
 			 System.out.println("Enter the Amount for the month:"+i);
 			 dues[i-1]=sc.nextDouble();
-			 obj.calculate(dues[i-1]);
+			 bo.calculate(dues[i-1]);
 			 
 		 }
 		 
 		 System.out.println("Total Amount is Paid By the User Sathish is:"+obj.balance);
-		 
+		}
+		catch(Exception e)
+		{
+		 System.out.println("Exception:"+e.getMessage());
+		 e.printStackTrace();
+			return;
+		}
 	}
+		
+
 
 
 

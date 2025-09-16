@@ -17,10 +17,10 @@ public class MapDemo {
 		
 		System.out.println("Key 1 value:"+map.get(1));
 		
-		System.out.println("hashmap:"+map);  //order not guranteed
+		System.out.println("hashmap:"+map);  //order not guranteed  //same
 		System.out.println("hashmap keys:"+map.keySet());
 		System.out.println("hashmap values:"+map.values());
-		System.out.println("Hashmap key value pairs"+map.entrySet());
+		System.out.println("Hashmap key value pairs"+map.entrySet()); //same outputs
 
 		LinkedHashMap<Integer,String> map2=new LinkedHashMap<>();
 		map2.put(1,"apple");
