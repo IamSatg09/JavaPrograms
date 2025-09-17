@@ -1,6 +1,7 @@
 package com.learning.StremApiDemo;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -149,7 +150,23 @@ public class Student {
 		
 		Map<Boolean,List<Student>>partition=list.stream().collect(Collectors.partitioningBy(n-> n.getMarks()>80));
 		System.out.println(partition);
+		
+		
+        System.out.println("Sort by multiple fields using compartor in sorted()");
+        list.stream().sorted(Comparator.comparing(Student::getId).thenComparing(Student::getName).reversed()).forEach(System.out::println);
+        
+        System.out.println("Sort by multiple fields using lambda in sorted()");
 
+        list.stream().sorted(Comparator.comparing(Student::getGrade)).forEach(System.out::println);
+        
+        System.out.println("minimum mark scored student data:");
+        System.out.println(list.stream().min(Comparator.comparing(Student::getMarks)).get());
+        System.out.println("Maximum mark scored student data:");
+        
+        System.out.println(list2.stream().max(Comparator.naturalOrder()).get());
+        System.out.println(list2.stream().max(Comparator.reverseOrder()).get());
+        
+       
 	}
 	
 }
