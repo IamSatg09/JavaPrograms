@@ -1,11 +1,15 @@
 package com.learning.StremApiDemo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Student {
 
@@ -167,6 +171,37 @@ public class Student {
         System.out.println(list2.stream().max(Comparator.reverseOrder()).get());
         
        
+        List<String> str=Arrays.asList("hello","java","welcome","python","aaaaaaaaaa");
+        System.out.println(str.stream().map(n->n.length()).max(Comparator.naturalOrder()).get());
+
+        str.stream().map(String::length).max(Comparator.naturalOrder()).get();
+        
+        System.out.println(str.stream().max(Comparator.comparingInt(String::length)).get());
+        
+        
+        
+        Map<String,Integer>combined=list.stream().collect(Collectors.groupingBy(Student::getGrade,Collectors.summingInt(Student::getMarks)));
+        System.out.println(combined);
+        
+        List<Integer> list3=Arrays.asList(9,20,11,null,12,7,null,8);
+       
+//        list.stream();
+//		Stream<Integer> combinedList =Stream.concat(list2.stream(), list3.stream()).sorted();
+//        List<Integer> combinedList2=Stream.concat(list2.stream(), list3.stream()).sorted().distinct().collect(Collectors.toList());
+//        
+//        System.out.println("Stream list\n"+combinedList);
+//        System.out.println( "list\n"+combinedList2);
+//        
+//        Map<Integer,Long> fre=list2.stream().sorted().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+//        System.out.println(fre);
+//        		
+//        Collections.sort(list3);
+        
+        list3.sort(Comparator.nullsFirst((Comparator.naturalOrder())));
+        System.out.println(list3);
+
+        
+
 	}
 	
 }
