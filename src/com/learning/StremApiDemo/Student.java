@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -98,10 +99,12 @@ public class Student {
 	{
 		List<Student> list=Arrays.asList(
 				new Student(1,"sathish",95,"A"),
-				new Student(1,"sathish",95,"A"),
+				new Student(1,"saasthish",95,"A"),
 				new Student(2,"santhosh",90,"A"),
 				new Student(3,"shan",80,"B"),
-				new Student(4,"shankar",70,"C")
+				new Student(4,"naveen",83,"C"),
+				new Student(5,"shankar",70,"C"),
+				new Student(6,"siva",73,"C")
 				);
 		
 		
@@ -199,8 +202,54 @@ public class Student {
         
         list3.sort(Comparator.nullsFirst((Comparator.naturalOrder())));
         System.out.println(list3);
+        
+        
+        System.out.println("Finding Students name starts with s");
+        
+        List<Student>sList=list.stream().filter(s->s.getName().startsWith("sat")).collect(Collectors.toList());
+        System.out.println(sList);
+        
+        System.out.println("Grouping students by Grade");
+        Map<String,List<Student>> GradeList=list.stream().collect(Collectors.groupingBy(Student::getGrade));
+        System.out.println(GradeList.entrySet());
+        
+        System.out.println(list.size());
+        
+        System.out.println(list.stream().count());
+        
+        System.out.println("finding maximum mark of students");
+        
+        Optional<Student> max=list.stream().max(Comparator.comparing(Student::getMarks));
+        if(max.isPresent())
+        	System.out.println("highest mark is "+max.get().getMarks());
+        
+        System.out.println("counting no of students in each grade");
+        
+        Map<String,Long> grp=list.stream().collect(Collectors.groupingBy(Student::getGrade,Collectors.counting()));
+        System.out.println(grp.entrySet());
+        
+        System.out.println("avergae marks of each grade");
+        
+       Map<String,Double>avgList=list.stream().collect(Collectors.groupingBy(Student::getGrade,Collectors.averagingInt(Student::getMarks)));
+       System.out.println(avgList.entrySet());
+       System.out.println(avgList.values());
+       System.out.println(avgList.keySet());
+       
+       
+       System.out.println("sort students by mark");
+       List<Student> bymark=list.stream().sorted(Comparator.comparing(Student::getMarks).thenComparing(Student::getName)).collect(Collectors.toList());
+       System.out.println(bymark);
+       
+       
+       
 
         
+        System.out.println("find student details with second highest mark");
+        List<Student> data=list.stream().sorted(Comparator.comparing(Student::getMarks).reversed()).skip(1).limit(1).collect(Collectors.toList());
+        System.out.println(data);
+        
+        List<Integer> data2=list.stream().map(Student::getMarks).distinct().sorted(Comparator.reverseOrder()).skip(1).limit(1).collect(Collectors.toList());
+        System.out.println(data2);
 
 	}
 	
